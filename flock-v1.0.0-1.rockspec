@@ -18,7 +18,7 @@ description = {
 }
 
 dependencies = {
-  'lua >= 5.1, <= 5.4',
+  'lua >= 5.1, <= 5.3',
   'torch_threads = v1.0.0',
   'torch_torch7 = v1.0.0',
   'gc_metatable = v1.0.0',
