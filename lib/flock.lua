@@ -24,6 +24,7 @@ local function new(thread_count)
 
     for i, value in ipairs(data) do
       pool:addjob(function()
+        unpack = table.unpack or unpack
         return user_fn(value, unpack(args))
       end, function(result)
         input_data_result_mapping[i].result = result
@@ -85,6 +86,7 @@ function Flock.taskq(thread_count, map_fn, ...)
   local enqueue_job = function(x)
     pending_jobs = pending_jobs + 1
     pool:addjob(function()
+      unpack = table.unpack or unpack
       return map_fn(x, unpack(args))
     end, completion_fn)
   end
